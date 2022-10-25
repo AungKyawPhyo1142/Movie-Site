@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h3 class="card-title h3">Manage Admins</h3>
                         <div class="">
-                            <a href="" class="btn w-100 btn-primary">Go</a>
+                            <a href="{{ route('admin#management') }}" class="btn w-100 btn-primary">Go</a>
                         </div>
                     </div>
                 </div>

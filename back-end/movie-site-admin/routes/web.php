@@ -27,8 +27,11 @@ Route::middleware([
 
     Route::get('/',function(){
         return view('admin.dashboard');
-    });
-    //  Route::get('/',[AdminController::class,'myProfile'])->name('admin#myProfile');
+    })->name('dashboard');
 
+    // Admins Management
+    Route::get('/management',[AdminController::class,'showManagement'])->name('admin#management');
+    Route::post('/admin/insert',[AdminController::class,'insertData'])->name('admin#insertData');
+    Route::get('admin/delete/{id}',[AdminController::class,'deleteData'])->name('admin#deleteData');
 });
 

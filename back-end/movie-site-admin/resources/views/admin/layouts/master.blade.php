@@ -26,6 +26,10 @@
                 <div class=" justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
+                            <a class="btn text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home"
+                                href="{{ route('dashboard') }}"><i class="fa-solid fa-house"></i></a>
+                        </li>
+                        <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn text-white" data-bs-toggle="tooltip"
