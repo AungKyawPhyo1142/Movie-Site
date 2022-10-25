@@ -114,7 +114,7 @@
                                 <td>{{ $item['email'] }}</td>
                                 <td>{{ $item['phone'] }}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-dark text-white"><i
+                                    <a href="{{route('admin#editPage',$item['id'])}}" class="btn btn-sm btn-dark text-white"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
 
                                     @if ($item['id'] != Auth::user()->id)
@@ -138,6 +138,12 @@
         @if (session('deleteSuccess'))
             <div class="alert col-5 alert-danger mt-3 alert-dismissible fade show" role="alert">
                 <strong>{{ session('deleteSuccess') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session('updateSuccess'))
+            <div class="alert col-5 alert-warning mt-3 alert-dismissible fade show" role="alert">
+                <strong>{{ session('updateSuccess') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif

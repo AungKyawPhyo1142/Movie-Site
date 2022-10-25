@@ -31,7 +31,10 @@ Route::middleware([
 
     // Admins Management
     Route::get('/management',[AdminController::class,'showManagement'])->name('admin#management');
-    Route::post('/admin/insert',[AdminController::class,'insertData'])->name('admin#insertData');
     Route::get('admin/delete/{id}',[AdminController::class,'deleteData'])->name('admin#deleteData');
+    Route::get('admin/edit/{id}',[AdminController::class,'editPage'])->name('admin#editPage');
+
+    Route::post('/admin/insert',[AdminController::class,'insertData'])->name('admin#insertData');
+    Route::post('/admin/update/{id}',[AdminController::class,'updateData'])->name('admin#update');
 });
 
