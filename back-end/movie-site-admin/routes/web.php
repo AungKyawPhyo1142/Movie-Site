@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('auth/login');
+    return view('auth.login');
 });
 
 
@@ -24,6 +25,10 @@ Route::middleware([
     'verified'
 ])->group(function () {
 
+    Route::get('/',function(){
+        return view('admin.dashboard');
+    });
+    //  Route::get('/',[AdminController::class,'myProfile'])->name('admin#myProfile');
 
 });
 
