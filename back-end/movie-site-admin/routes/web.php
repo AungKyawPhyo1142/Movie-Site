@@ -47,6 +47,7 @@ Route::middleware([
     Route::prefix('movie')->group(function () {
         Route::get('/management',[MovieController::class,'showManagement'])->name('movie#management');
         Route::get('/list',[MovieController::class,'showList'])->name('movie#list');
+        Route::get('/delete/{id}',[MovieController::class,'deleteData'])->name('movie#delete');
         Route::post('/insert',[MovieController::class,'insertData'])->name('movie#insertData');
     });
 });

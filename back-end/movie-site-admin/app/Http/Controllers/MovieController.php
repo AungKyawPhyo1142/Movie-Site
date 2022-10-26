@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
@@ -17,7 +18,8 @@ class MovieController extends Controller
 
     // redirect to movie list
     public function showList(){
-        return view('admin.movie_management.list');
+        $data = Movie::paginate(3);
+        return view('admin.movie_management.list',compact('data'));
     }
 
     // insert data
@@ -40,6 +42,16 @@ class MovieController extends Controller
 
         return back()->with(['insertSuccess'=>'Movie inserted successfully!']);
 
+    }
+
+    // delete data
+    public function deleteData($id){
+        // delete image form public
+        $dbImage = Movie::select('image')->where('id',$id)->first();
+        Storage::delete('public/'.$dbImage->image);
+        // delete the record
+        Movie::where('id',$id)->delete();
+        return back()->with(['deleteSuccess'=>'Movie deleted successfully!']);
     }
 
     /*------------------------ Private Functions ------------------------*/
