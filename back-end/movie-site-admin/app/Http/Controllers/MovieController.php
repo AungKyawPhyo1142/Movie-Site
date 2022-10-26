@@ -54,6 +54,19 @@ class MovieController extends Controller
         return back()->with(['deleteSuccess'=>'Movie deleted successfully!']);
     }
 
+    // search data
+    public function searchData(Request $req){
+        $searchKey = $req->searchKey;
+        $data = Movie::   orWhere('title','like','%'.$searchKey.'%')
+                        ->orWhere('rating','like','%'.$searchKey.'%')
+                        ->orWhere('rated','like','%'.$searchKey.'%')
+                        ->orWhere('genre','like','%'.$searchKey.'%')
+                        ->paginate(3);
+
+        return view('admin.movie_management.list',compact('data'));
+
+    }
+
     /*------------------------ Private Functions ------------------------*/
     private function getRequestData($req){
         return [

@@ -2,12 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="row d-flex justify-content-end my-2">
-            <form action="" class="col-sm-3">
+        <div class="row d-flex justify-content-between my-2">
+
+            <div class="col-sm-3">
+                <a href="{{route('movie#management')}}" class="btn btn-secondary"><i class="fa-solid fa-angle-left me-2"></i>Back</a>
+            </div>
+
+            <form action="{{route('movie#search')}}" class="col-sm-3" method="POST">
                 @csrf
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="search" name="searchKey" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
                   </div>
             </form>
         </div>
