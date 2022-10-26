@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    // redirect to profile > details
-    public function myProfile(){
-        return view('admin.profile.details');
-    }
 
     // redirect to admin management
     public function showManagement(){

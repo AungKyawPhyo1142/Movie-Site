@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +30,24 @@ Route::middleware([
         return view('admin.dashboard');
     })->name('dashboard');
 
+
+    // Admins Management
+    Route::prefix('admin')->group(function () {
     // Admins Management
     Route::get('/management',[AdminController::class,'showManagement'])->name('admin#management');
-    Route::get('admin/delete/{id}',[AdminController::class,'deleteData'])->name('admin#deleteData');
-    Route::get('admin/edit/{id}',[AdminController::class,'editPage'])->name('admin#editPage');
+    Route::get('/delete/{id}',[AdminController::class,'deleteData'])->name('admin#deleteData');
+    Route::get('/edit/{id}',[AdminController::class,'editPage'])->name('admin#editPage');
+    Route::post('/insert',[AdminController::class,'insertData'])->name('admin#insertData');
+    Route::post('/update/{id}',[AdminController::class,'updateData'])->name('admin#update');
 
-    Route::post('/admin/insert',[AdminController::class,'insertData'])->name('admin#insertData');
-    Route::post('/admin/update/{id}',[AdminController::class,'updateData'])->name('admin#update');
+    });
+
+
+    // Movies Management
+    Route::prefix('movie')->group(function () {
+        Route::get('/management',[MovieController::class,'showManagement'])->name('movie#management');
+        Route::get('/list',[MovieController::class,'showList'])->name('movie#list');
+        Route::post('/insert',[MovieController::class,'insertData'])->name('movie#insertData');
+    });
 });
 

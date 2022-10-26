@@ -11,8 +11,14 @@ class Movie extends Model
     protected $fillable = [
         'title',
         'image',
-        'links',
+        'gdrive_link',
+        'mdrive_link',
         'rating',
-        'genre'
+        'genre',
+        'rated',
+        'description',
+        'created_at',
+        'updated_at'
+
     ];
 }

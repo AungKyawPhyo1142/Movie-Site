@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image')->nullable(true);
+            $table->string('image');
+            $table->string('rating');
+            $table->string('genre');
+            $table->string('rated');
             $table->string('gdrive_link');
             $table->string('mdrive_link');
-            $table->string('rating')->nullable(true);
-            $table->string('genre')->nullable(true);
-            $table->string('year')->nullable(true);
+            $table->string('description');
             $table->timestamps();
         });
     }
