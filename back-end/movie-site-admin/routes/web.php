@@ -48,8 +48,10 @@ Route::middleware([
         Route::get('/management',[MovieController::class,'showManagement'])->name('movie#management');
         Route::get('/list',[MovieController::class,'showList'])->name('movie#list');
         Route::get('/delete/{id}',[MovieController::class,'deleteData'])->name('movie#delete');
+        Route::get('/edit/{id}',[MovieController::class,'editPage'])->name('movie#editPage');
         Route::post('/search',[MovieController::class,'searchData'])->name('movie#search');
         Route::post('/insert',[MovieController::class,'insertData'])->name('movie#insertData');
+        Route::post('/update/{id}',[MovieController::class,'updateData'])->name('movie#updateData');
     });
 });
 

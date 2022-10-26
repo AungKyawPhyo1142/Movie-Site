@@ -13,7 +13,8 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="search" name="searchKey" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-                  </div>
+                    <a href="{{route('movie#list')}}" class="btn btn-outline-secondary" type="button">All</a>
+                </div>
             </form>
         </div>
         <div class="row">
@@ -41,7 +42,7 @@
                             <td>{{ $item['rating'] }}</td>
                             <td>{{ $item['rated'] }}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-dark text-white"><i
+                                <a href="{{route('movie#editPage',$item['id'])}}" class="btn btn-sm btn-dark text-white"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
 
                                 <a href="{{route('movie#delete',$item['id'])}}"
