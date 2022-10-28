@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{ $item['id'] }}</td>
                             <td>
-                                <img style="height: 100px" src="{{asset('storage/'.$item['image'])}}" class="img-thumbnail" alt="">
+                                <img style="height: 100px" src="{{asset('/movie_posters/'.$item['image'])}}" class="img-thumbnail" alt="">
                             </td>
                             <td>{{ $item['title'] }}</td>
                             <td>{{ $item['genre'] }}</td>

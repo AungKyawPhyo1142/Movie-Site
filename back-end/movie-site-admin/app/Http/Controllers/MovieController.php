@@ -34,9 +34,9 @@ class MovieController extends Controller
         }
 
         $data = $this->getRequestData($req);
-
-        $fileName = uniqid().$req->file('image')->getClientOriginalName();
-        $req->file('image')->storeAs('public',$fileName);
+        $file = $req->file('image');
+        $fileName = uniqid().'_'.$req->file('image')->getClientOriginalName();
+        $file->move(public_path().'/movie_posters',$fileName);
         $data['image']= $fileName;
 
         Movie::create($data);
@@ -49,7 +49,9 @@ class MovieController extends Controller
     public function deleteData($id){
         // delete image form public
         $dbImage = Movie::select('image')->where('id',$id)->first();
-        Storage::delete('public/'.$dbImage->image);
+        if(File::exists(public_path().'/movie_posters/'.$dbImage)){
+            File::delete(public_path().'movie_posters/'.$dbImage);
+        }
         // delete the record
         Movie::where('id',$id)->delete();
         return back()->with(['deleteSuccess'=>'Movie deleted successfully!']);
@@ -146,12 +148,12 @@ class MovieController extends Controller
         $data = Movie::where('id',$id)->first();
 
         if($data->image !=null){
-            if(File::exists(public_path().'/storage/'.$data->image)){
-                File::delete(public_path().'/storage/'.$data->image);
+            if(File::exists(public_path().'/movie_posters/'.$data->image)){
+                File::delete(public_path().'/movie_posters/'.$data->image);
             }
         }
 
-        $file->move(public_path().'/storage/',$fileName);
+        $file->move(public_path().'/movie_posters/',$fileName);
         $data = $this->getRequestData($req);
         $data['image'] = $fileName;
         Movie::where('id',$id)->update($data);

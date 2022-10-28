@@ -23,4 +23,12 @@ class MovieController extends Controller
             'movie' => $movie
         ], 200);
     }
+
+    // get all movie posters
+    public function getAllMoviePosters(){
+        $posters = Movie::select('image')->get();
+        return response()->json([
+            'posters' => $posters
+        ], 200);
+    }
 }

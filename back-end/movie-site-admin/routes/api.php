@@ -22,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /*---------------------------- Movies API ----------------------------*/
 Route::prefix('movies')->group(function () {
     Route::get('all',[MovieController::class,'getAllMovies']);
+    Route::get('posters/all',[MovieController::class,'getAllMoviePosters']);
     Route::post('detail',[MovieController::class,'getDetailMovie']);
+
 });
