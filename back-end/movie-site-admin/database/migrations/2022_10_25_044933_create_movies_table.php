@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('rated');
             $table->string('gdrive_link');
             $table->string('mdrive_link');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }
