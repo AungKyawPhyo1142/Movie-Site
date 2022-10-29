@@ -1,8 +1,8 @@
 <template>
-    <!-- Navbar start -->
-    <nav class="navbar navbar-dark z position-fixed bg-dark w-100">
+      <!-- Navbar start -->
+      <nav class="navbar navbar-dark z position-fixed bg-dark w-100">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><iconify-icon class="me-2" inline icon="tabler:brand-backbone"></iconify-icon><span class="text-uppercase">Kein-Movies</span></a>
+    <a class="navbar-brand" @click="search()" href="#"><iconify-icon class="me-2" inline icon="tabler:brand-backbone"></iconify-icon><span class="text-uppercase">Kein-Movies</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,13 +14,7 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">All</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Series</a>
+            <a class="nav-link active" aria-current="page" href="#" @click="search()">All</a>
           </li>
         </ul>
         <div class="d-flex mt-3" role="search">
@@ -38,8 +32,8 @@
         <div class="content-container col-10 offset-1">
           <div class="row mt-3">
             <div class="col-lg-3 col-md-4 col-sm-5 p-1 mb-2 overlay-container"  v-for="(item,index) in movie_list" :key="index">
-              <img :src="item.image" class="rounded movie-item" alt="" style="height:250px">
-              <div class="overlay ms-5 d-flex align-items-center justify-content-center" style="width:174px">
+              <img :src="item.image" class="rounded movie-item" alt=""  style="height:250px">
+              <div @click="movieDetails(item.id)" class="overlay ms-5 d-flex align-items-center justify-content-center" style="width:174px">
                 <span class="text-uppercase text-wrap fw-bold text-white p-2">{{item.title}}</span>
               </div>
             </div>

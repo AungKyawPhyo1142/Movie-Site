@@ -41,6 +41,14 @@ export default {
                     this.movie_list = response.data.result;
                     this.searchKey = '';
                 })
+        },
+        movieDetails(id) {
+            this.$router.push({
+                name: 'detail',
+                params: {
+                    movie_id: id
+                }
+            });
         }
     },
     mounted() {
