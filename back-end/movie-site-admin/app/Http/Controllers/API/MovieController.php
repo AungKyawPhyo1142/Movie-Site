@@ -26,9 +26,17 @@ class MovieController extends Controller
 
     // get all movie posters
     public function getAllMoviePosters(){
-        $posters = Movie::select('image')->get();
+        $posters = Movie::select('image')->get(3);
         return response()->json([
             'posters' => $posters
+        ], 200);
+    }
+
+    // search Movie
+    public function searchMovie(Request $req){
+        $movie = Movie::where('title','like','%'.$req->key.'%')->get();
+        return response()->json([
+            'result' => $movie
         ], 200);
     }
 }

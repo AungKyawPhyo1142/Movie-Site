@@ -24,5 +24,6 @@ Route::prefix('movies')->group(function () {
     Route::get('all',[MovieController::class,'getAllMovies']);
     Route::get('posters/all',[MovieController::class,'getAllMoviePosters']);
     Route::post('detail',[MovieController::class,'getDetailMovie']);
+    Route::post('search',[MovieController::class,'searchMovie']);
 
 });
